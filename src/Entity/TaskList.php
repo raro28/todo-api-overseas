@@ -39,7 +39,7 @@ class TaskList
     private $backgroundPath;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="list", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="list", cascade={"persist","remove"})
      */
     private $tasks;
 
