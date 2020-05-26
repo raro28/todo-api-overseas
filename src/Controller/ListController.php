@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
+use FOS\RestBundle\Controller\Annotations;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ListController extends AbstractController
+class ListController extends AbstractFOSRestController
 {
     /**
-     * @Route("/list", name="list")
+     * @Annotations\Get("/list")
      */
     public function index()
     {
@@ -16,5 +17,12 @@ class ListController extends AbstractController
             'message' => 'Welcome to your new controller!',
             'path' => 'src/Controller/ListController.php',
         ]);
+    }
+
+    /**
+     * @Annotations\Post("/update")
+     */
+    public function update(){
+        return $this->json(['message' => 'update']);
     }
 }
