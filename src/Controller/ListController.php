@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Task;
 use App\Entity\TaskList;
 use App\Repository\TaskListRepository;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
@@ -37,7 +38,8 @@ class ListController extends AbstractFOSRestController
 
    /**
     * 
-    * @return \App\Entity\TaskList
+    * @param int $id
+    * @return Symfony\Component\HttpFoundation\Response
     */
    public function getListAction(int $id){
       $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
@@ -50,6 +52,7 @@ class ListController extends AbstractFOSRestController
     * 
     * @Rest\RequestParam(name="title", description="description", nullable=false)
     * @param ParamFetcher $paramFetcher
+    *
     * @return Symfony\Component\HttpFoundation\Response
     */
    public function postListsAction(ParamFetcher $paramFetcher){
@@ -64,17 +67,45 @@ class ListController extends AbstractFOSRestController
    }
 
    /**
+    * 
+    * @param int $id
     * @return Symfony\Component\HttpFoundation\Response
     */
-   public function getListTaskAction(int $id){
-      return $this->json([]);
+   public function getListTasksAction(int $id){
+      $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
+
+      $view = $this->view($taskList->getTasks(), Response::HTTP_OK);
+      return $this->handleView($view);
    }
 
+   /**
+    * 
+    * @Rest\RequestParam(name="title", description="description", nullable=false)
+    * @param ParamFetcher $paramFetcher
+    * @param int $id
+    *
+    * @return Symfony\Component\HttpFoundation\Response
+    */
+   public function postListTaskAction(ParamFetcher $paramFetcher, int $id){
+      $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
+
+      $task = new Task();
+      $task->setTitle($paramFetcher->get('title'));
+      $task->setList($taskList);
+      $task->setIsComplete(false);
+      $taskList->getTasks()->add($task);
+
+      $this->entityManagerInterface->persist($taskList);
+      $this->entityManagerInterface->flush();
+
+      $view = $this->view($task, Response::HTTP_CREATED);
+      return $this->handleView($view);
+   }
+
+   /**
+    * @return Symfony\Component\HttpFoundation\Response
+    */
    public function putListsAction(){
-      return $this->json([]);
-   }
-
-   public function patchListStateAction(int $id){
       return $this->json([]);
    }
 
@@ -83,6 +114,7 @@ class ListController extends AbstractFOSRestController
     * @param Request $request
     * @param ParamFetcher $paramFetcher
     * @param int $id
+    *
     * @return Symfony\Component\HttpFoundation\Response
     */
    public function postListBackgroundAction(Request $request, ParamFetcher $paramFetcher, int $id){
@@ -106,6 +138,43 @@ class ListController extends AbstractFOSRestController
       $data = $request->getUriForPath($taskList->getBackgroundPath());
 
       $view = $this->view($data, Response::HTTP_OK);
+      return $this->handleView($view);
+   }
+
+   /**
+    * 
+    * @param int $id
+    * @return Symfony\Component\HttpFoundation\Response
+    */
+   public function deleteListAction(int $id){
+      $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
+
+      $this->entityManagerInterface->remove($taskList);
+      $this->entityManagerInterface->flush();
+
+
+      $view = $this->view(null, Response::HTTP_NO_CONTENT);
+      return $this->handleView($view);
+   }
+
+   /**
+    * 
+    * @Rest\RequestParam(name="title", description="description", nullable=false)
+    * @param ParamFetcher $paramFetcher
+    * @param int $id
+    *
+    * @return Symfony\Component\HttpFoundation\Response
+    */
+   public function patchListTitleAction(ParamFetcher $paramFetcher, int $id){
+      $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
+
+      $taskList->setTitle($paramFetcher->get('title'));
+
+      $this->entityManagerInterface->persist($taskList);
+      $this->entityManagerInterface->flush();
+
+
+      $view = $this->view(null, Response::HTTP_NO_CONTENT);
       return $this->handleView($view);
    }
 }
