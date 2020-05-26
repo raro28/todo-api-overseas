@@ -103,4 +103,15 @@ class TaskController extends AbstractFOSRestController
         $view = $this->view(null, Response::HTTP_NO_CONTENT);
         return $this->handleView($view);
      }
+
+   /**
+    * 
+    * @param Task $task
+    * @return Symfony\Component\HttpFoundation\Response
+    */
+    public function getTaskAction(Task $task){
+      $view = $this->view($task, Response::HTTP_CREATED);
+      return $this->handleView($view);
+   }
+
 }

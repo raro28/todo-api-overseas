@@ -56,4 +56,14 @@ class NoteController extends AbstractFOSRestController
         return $this->handleView($view);
     }
 
+   /**
+    * 
+    * @param Note $note
+    * @return Symfony\Component\HttpFoundation\Response
+    */
+    public function getNoteAction(Note $note){
+        $view = $this->view($note, Response::HTTP_CREATED);
+        return $this->handleView($view);
+     }
+
 }
