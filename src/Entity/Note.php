@@ -4,12 +4,17 @@ namespace App\Entity;
 
 use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks as HasLifecycleCallbacks;
 
 /**
  * @ORM\Entity(repositoryClass=NoteRepository::class)
+ * HasLifecycleCallbacks()
  */
 class Note
 {
+
+    use Timestamps;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

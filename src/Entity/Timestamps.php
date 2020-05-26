@@ -1,0 +1,33 @@
+<?php
+
+use Doctrine\ORM\Mapping as ORM;
+
+namespace App\Entity;
+
+trait Timestamps
+{
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function createdAt(){
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    private function updatedAt(){
+        $this->updatedAt = new \DateTime();
+    }
+}
