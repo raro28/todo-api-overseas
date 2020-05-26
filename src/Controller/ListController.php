@@ -41,12 +41,10 @@ class ListController extends AbstractFOSRestController
 
    /**
     * 
-    * @param int $id
+    * @param TaskList $taskList
     * @return Symfony\Component\HttpFoundation\Response
     */
-   public function getListAction(int $id){
-      $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
-
+   public function getListAction(TaskList $taskList){
       $view = $this->view($taskList, Response::HTTP_CREATED);
       return $this->handleView($view);
    }
@@ -71,12 +69,10 @@ class ListController extends AbstractFOSRestController
 
    /**
     * 
-    * @param int $id
+    * @param TaskList $taskList
     * @return Symfony\Component\HttpFoundation\Response
     */
-   public function getListTasksAction(int $id){
-      $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
-
+   public function getListTasksAction(TaskList $taskList){
       $view = $this->view($taskList->getTasks(), Response::HTTP_OK);
       return $this->handleView($view);
    }
@@ -85,13 +81,11 @@ class ListController extends AbstractFOSRestController
     * 
     * @Rest\RequestParam(name="title", description="description", nullable=false)
     * @param ParamFetcher $paramFetcher
-    * @param int $id
+    * @param TaskList $taskList
     *
     * @return Symfony\Component\HttpFoundation\Response
     */
-   public function postListTaskAction(ParamFetcher $paramFetcher, int $id){
-      $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
-
+   public function postListTaskAction(ParamFetcher $paramFetcher, TaskList $taskList){
       $task = new Task();
       $task->setTitle($paramFetcher->get('title'));
       $task->setList($taskList);
@@ -109,13 +103,11 @@ class ListController extends AbstractFOSRestController
     * @Rest\FileParam(name="image", description="background ", nullable=false, image=true)
     * @param Request $request
     * @param ParamFetcher $paramFetcher
-    * @param int $id
+    * @param TaskList $taskList
     *
     * @return Symfony\Component\HttpFoundation\Response
     */
-   public function postListPropertiesBackgroundAction(Request $request, ParamFetcher $paramFetcher, int $id){
-      $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
-
+   public function postListPropertiesBackgroundAction(Request $request, ParamFetcher $paramFetcher, TaskList $taskList){
       if($taskList->getBackground() != null){
          $fileSystem = new Filesystem();
          $fileSystem->remove($this->getParameter('uploads_dir').'/'.$taskList->getBackground());
@@ -139,12 +131,10 @@ class ListController extends AbstractFOSRestController
 
    /**
     * 
-    * @param int $id
+    * @param TaskList $taskList
     * @return Symfony\Component\HttpFoundation\Response
     */
-   public function deleteListAction(int $id){
-      $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
-
+   public function deleteListAction(TaskList $taskList){
       $this->entityManagerInterface->remove($taskList);
       $this->entityManagerInterface->flush();
 
@@ -157,13 +147,11 @@ class ListController extends AbstractFOSRestController
     * 
     * @Rest\RequestParam(name="title", description="description", nullable=false)
     * @param ParamFetcher $paramFetcher
-    * @param int $id
+    * @param TaskList $taskList
     *
     * @return Symfony\Component\HttpFoundation\Response
     */
-   public function patchListPropertiesTitleAction(ParamFetcher $paramFetcher, int $id){
-      $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
-
+   public function patchListPropertiesTitleAction(ParamFetcher $paramFetcher, TaskList $taskList){
       $taskList->setTitle($paramFetcher->get('title'));
 
       $this->entityManagerInterface->persist($taskList);

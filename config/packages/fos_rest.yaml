@@ -8,5 +8,6 @@ fos_rest:
             - { path: ^/, fallback_format: json, priorities: [ json ] }
     exception:
         enabled: true
+        exception_controller: 'fos_rest.exception.controller:showAction'
     body_listener: true
     param_fetcher_listener: true

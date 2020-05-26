@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Note;
+use App\Entity\Task;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
@@ -25,12 +26,10 @@ class TaskController extends AbstractFOSRestController
 
    /**
     * 
-    * @param int $id
+    * @param Task $task
     * @return Symfony\Component\HttpFoundation\Response
     */
-    public function deleteTaskAction(int $id){
-        $task = $this->taskRepository->findOneBy(['id' => $id]);
-  
+    public function deleteTaskAction(Task $task){
         $this->entityManagerInterface->remove($task);
         $this->entityManagerInterface->flush();
   
@@ -41,12 +40,10 @@ class TaskController extends AbstractFOSRestController
 
    /**
     * 
-    * @param int $id
+    * @param Task $task
     * @return Symfony\Component\HttpFoundation\Response
     */
-     public function patchTaskPropertiesStatusAction(int $id){
-        $task = $this->taskRepository->findOneBy(['id' => $id]);
-  
+     public function patchTaskPropertiesStatusAction(Task $task){
         $task->setIsComplete(!$task->getIsComplete());
 
         $this->entityManagerInterface->persist($task);
@@ -59,12 +56,10 @@ class TaskController extends AbstractFOSRestController
 
    /**
     * 
-    * @param int $id
+    * @param Task $task
     * @return Symfony\Component\HttpFoundation\Response
     */
-    public function getTaskNotesAction(int $id){
-        $task = $this->taskRepository->findOneBy(['id' => $id]);
-  
+    public function getTaskNotesAction(Task $task){
         $view = $this->view($task->getNotes(), Response::HTTP_OK);
         return $this->handleView($view);
      }
@@ -73,13 +68,11 @@ class TaskController extends AbstractFOSRestController
     * 
     * @Rest\RequestParam(name="note", description="description", nullable=false)
     * @param ParamFetcher $paramFetcher
-    * @param int $id
+    * @param Task $task
     *
     * @return Symfony\Component\HttpFoundation\Response
     */
-    public function postTaskNoteAction(ParamFetcher $paramFetcher, int $id){
-        $task = $this->taskRepository->findOneBy(['id' => $id]);
-  
+    public function postTaskNoteAction(ParamFetcher $paramFetcher, Task $task){
         $note = new Note();
         $note->setNote($paramFetcher->get('note'));
         $note->setTask($task);
@@ -96,13 +89,11 @@ class TaskController extends AbstractFOSRestController
     * 
     * @Rest\RequestParam(name="title", description="description", nullable=false)
     * @param ParamFetcher $paramFetcher
-    * @param int $id
+    * @param Task $task
     *
     * @return Symfony\Component\HttpFoundation\Response
     */
-    public function patchTaskPropertiesTitleAction(ParamFetcher $paramFetcher, int $id){
-        $task = $this->taskRepository->findOneBy(['id' => $id]);
-  
+    public function patchTaskPropertiesTitleAction(ParamFetcher $paramFetcher, Task $task){
         $task->setTitle($paramFetcher->get('title'));
   
         $this->entityManagerInterface->persist($task);

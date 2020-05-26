@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Note;
 use App\Repository\NoteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
@@ -24,12 +25,10 @@ class NoteController extends AbstractFOSRestController
 
    /**
     * 
-    * @param int $id
+    * @param Note $note
     * @return Symfony\Component\HttpFoundation\Response
     */
-    public function deleteNoteAction(int $id){
-        $note = $this->noteRepository->findOneBy(['id' => $id]);
-  
+    public function deleteNoteAction(Note $note){
         $this->entityManagerInterface->remove($note);
         $this->entityManagerInterface->flush();
   
@@ -40,16 +39,14 @@ class NoteController extends AbstractFOSRestController
 
    /**
     * 
-    * @Rest\RequestParam(name="note", description="description", nullable=false)
+    * @Rest\RequestParam(name="content", description="description", nullable=false)
     * @param ParamFetcher $paramFetcher
-    * @param int $id
+    * @param Note $note
     *
     * @return Symfony\Component\HttpFoundation\Response
     */
-    public function patchNotePropertiesContentAction(ParamFetcher $paramFetcher, int $id){
-        $note = $this->noteRepository->findOneBy(['id' => $id]);
-  
-        $note->setNote($paramFetcher->get('note'));
+    public function patchNotePropertiesContentAction(ParamFetcher $paramFetcher, Note $note){
+        $note->setNote($paramFetcher->get('content'));
   
         $this->entityManagerInterface->persist($note);
         $this->entityManagerInterface->flush();
