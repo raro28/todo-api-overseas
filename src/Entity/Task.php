@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping\HasLifecycleCallbacks as HasLifecycleCallbacks;
 
 /**
  * @ORM\Entity(repositoryClass=TaskRepository::class)
- * HasLifecycleCallBacks()
+ * @HasLifecycleCallBacks()
  */
 class Task
 {

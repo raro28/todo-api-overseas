@@ -27,7 +27,7 @@ trait Timestamps
     /**
      * @ORM\PreUpdate()
      */
-    private function updatedAt(){
+    public   function updatedAt(){
         $this->updatedAt = new \DateTime();
     }
 }

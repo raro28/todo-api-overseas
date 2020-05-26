@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping\HasLifecycleCallbacks as HasLifecycleCallbacks;
 
 /**
  * @ORM\Entity(repositoryClass=NoteRepository::class)
- * HasLifecycleCallbacks()
+ * @HasLifecycleCallbacks()
  */
 class Note
 {
