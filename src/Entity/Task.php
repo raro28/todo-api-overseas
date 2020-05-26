@@ -39,7 +39,7 @@ class Task
     private $list;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Note", mappedBy="task")
+     * @ORM\OneToMany(targetEntity="App\Entity\Note", mappedBy="task", cascade={"persist"})
      */
     private $notes;
 

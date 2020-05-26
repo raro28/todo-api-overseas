@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Task;
 use App\Entity\TaskList;
 use App\Repository\TaskListRepository;
+use App\Repository\TaskRepository;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -17,11 +18,13 @@ class ListController extends AbstractFOSRestController
 {
 
    private $taskListRepository;
+   private $taskRepository;
    private $entityManagerInterface;
 
-   public function __construct(TaskListRepository $taskListRepository, EntityManagerInterface $entityManagerInterface)
+   public function __construct(TaskListRepository $taskListRepository, TaskRepository $taskRepository, EntityManagerInterface $entityManagerInterface)
    {
       $this->taskListRepository = $taskListRepository;
+      $this->taskRepository = $taskRepository;
       $this->entityManagerInterface = $entityManagerInterface;
    } 
 
@@ -103,13 +106,6 @@ class ListController extends AbstractFOSRestController
    }
 
    /**
-    * @return Symfony\Component\HttpFoundation\Response
-    */
-   public function putListsAction(){
-      return $this->json([]);
-   }
-
-   /**
     * @Rest\FileParam(name="image", description="background ", nullable=false, image=true)
     * @param Request $request
     * @param ParamFetcher $paramFetcher
@@ -117,7 +113,7 @@ class ListController extends AbstractFOSRestController
     *
     * @return Symfony\Component\HttpFoundation\Response
     */
-   public function postListBackgroundAction(Request $request, ParamFetcher $paramFetcher, int $id){
+   public function postListPropertiesBackgroundAction(Request $request, ParamFetcher $paramFetcher, int $id){
       $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
 
       if($taskList->getBackground() != null){
@@ -165,7 +161,7 @@ class ListController extends AbstractFOSRestController
     *
     * @return Symfony\Component\HttpFoundation\Response
     */
-   public function patchListTitleAction(ParamFetcher $paramFetcher, int $id){
+   public function patchListPropertiesTitleAction(ParamFetcher $paramFetcher, int $id){
       $taskList = $this->taskListRepository->findOneBy(['id' => $id]);
 
       $taskList->setTitle($paramFetcher->get('title'));
