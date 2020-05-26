@@ -3,26 +3,31 @@
 namespace App\Controller;
 
 use FOS\RestBundle\Controller\AbstractFOSRestController;
-use FOS\RestBundle\Controller\Annotations;
-use Symfony\Component\Routing\Annotation\Route;
 
 class ListController extends AbstractFOSRestController
 {
-    /**
-     * @Annotations\Get("/list")
-     */
-    public function index()
-    {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/ListController.php',
-        ]);
-    }
 
-    /**
-     * @Annotations\Post("/update")
-     */
-    public function update(){
-        return $this->json(['message' => 'update']);
-    }
+     public function getListsAction(){
+        return $this->json([]);
+     }
+
+     public function getListAction(int $id){
+        return $this->json([]);
+     }
+
+     public function postListsAction(){
+        return $this->json([]);
+     }
+
+     public function getListTaskAction(int $id){
+        return $this->json([]);
+     }
+
+     public function putListsAction(){
+        return $this->json([]);
+     }
+
+     public function patchListStateAction(int $id){
+        return $this->json([]);
+     }
 }
