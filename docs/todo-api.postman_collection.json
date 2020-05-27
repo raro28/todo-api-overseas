@@ -26,12 +26,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/lists",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/lists",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"lists"
@@ -46,12 +46,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/lists/{{taskListId}}",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/lists/{{taskListId}}",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"lists",
@@ -95,12 +95,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/lists",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/lists",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"lists"
@@ -115,12 +115,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/lists/{{taskListId}}/tasks",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/lists/{{taskListId}}/tasks",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"lists",
@@ -160,12 +160,12 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/lists/{{taskListId}}/tasks",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/lists/{{taskListId}}/tasks",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"lists",
@@ -192,12 +192,12 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/lists/{{taskListId}}/properties/backgrounds",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/lists/{{taskListId}}/properties/backgrounds",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"lists",
@@ -225,12 +225,12 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/lists/{{taskListId}}/properties/title",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/lists/{{taskListId}}/properties/title",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"lists",
@@ -260,12 +260,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/lists/{{taskListId}}",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/lists/{{taskListId}}",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"lists",
@@ -299,12 +299,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/tasks/{{taskId}}",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/tasks/{{taskId}}",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"tasks",
@@ -320,12 +320,12 @@
 						"method": "PATCH",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/tasks/{{taskId}}/properties/status",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/tasks/{{taskId}}/properties/status",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"tasks",
@@ -343,12 +343,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/tasks/{{taskId}}/notes",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/tasks/{{taskId}}/notes",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"tasks",
@@ -388,12 +388,12 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/tasks/{{taskId}}/notes",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/tasks/{{taskId}}/notes",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"tasks",
@@ -420,12 +420,12 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/tasks/{{taskId}}/properties/title",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/tasks/{{taskId}}/properties/title",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"tasks",
@@ -443,12 +443,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/tasks/{{taskId}}",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/tasks/{{taskId}}",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"tasks",
@@ -482,12 +482,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/notes/{{noteId}}",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/notes/{{noteId}}",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"notes",
@@ -513,12 +513,12 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/notes/{{noteId}}/properties/content",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/notes/{{noteId}}/properties/content",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"notes",
@@ -536,12 +536,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/notes/{{noteId}}",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/notes/{{noteId}}",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"notes",
@@ -585,12 +585,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/login_check",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/login_check",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"login_check"
@@ -627,12 +627,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/token/refresh",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/token/refresh",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"token",
@@ -663,12 +663,12 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/users/registration",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/users/registration",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"users",
@@ -690,12 +690,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/preferences/{{taskListId}}",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/preferences/{{taskListId}}",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"preferences",
@@ -721,12 +721,12 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/preferences/{{taskListId}}/properties/sort",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/preferences/{{taskListId}}/properties/sort",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"preferences",
@@ -754,12 +754,12 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/api/preferences/{{taskListId}}/properties/filter",
-							"protocol": "http",
+							"raw": "{{schema}}://{{host}}:{{port}}/api/preferences/{{taskListId}}/properties/filter",
+							"protocol": "{{schema}}",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8000",
+							"port": "{{port}}",
 							"path": [
 								"api",
 								"preferences",
