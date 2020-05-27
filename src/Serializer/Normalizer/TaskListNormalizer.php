@@ -31,6 +31,8 @@ class TaskListNormalizer implements NormalizerInterface {
             $this->packages->getUrl($object->getBackgroundPath(), 'backgrounds')
         );
 
+        $context['ignored_attributes'] = ['user'];
+
         $data = $this->objectNormalizer->normalize($object, $format, $context);
 
         return $data;
