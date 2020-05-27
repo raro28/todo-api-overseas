@@ -119,6 +119,7 @@ class ListController extends AbstractFOSRestController
       $file->move($this->getParameter('uploads_dir').'/', $fileName);
 
       $taskList->setBackgroundPath('/uploads/'.$fileName);
+      $taskList->setBackground($fileName);
 
       $this->entityManagerInterface->persist($taskList);
       $this->entityManagerInterface->flush();
